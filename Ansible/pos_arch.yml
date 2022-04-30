@@ -1,0 +1,145 @@
+---
+- name: Arch Linux by (ThorDevOps)
+  hosts: localhost
+  connection: local 
+  become: true  
+  tasks:
+
+   - name: Install application
+     community.general.pacman:
+      name: 
+        - mame
+        - fceux
+        - dosbox
+        - pcsx2 
+        - rlwrap  
+        - jre-openjdk-headless
+        - jre-openjdk
+        - jdk-openjdk
+        - java-openjfx
+        - jre11-openjdk-headless
+        - jre11-openjdk
+        - jdk11-openjdk	
+        - java11-openjfx
+        - jre8-openjdk-headless
+        - jre8-openjdk
+        - jdk8-openjdk
+        - java8-openjfx 
+        - gnome-themes-extra
+        - gtk-engine-murrine
+        - sassc
+        - google-chrome
+        - audacity
+        - blender
+        - clipit
+        - krita
+        - kdenlive
+        - kdevelop
+        - atom
+        - ulauncher
+        - darktable
+        - gimp-help-pt_br
+        - inkscape
+        - telegram-desktop
+        - gthumb
+        - vlc
+        - spotify
+        - gnome-tweaks
+        - ffmpeg
+        - ffmpegthumbnailer
+        - gst-libav
+        - gst-plugins-ugly
+        - gstreamer
+        - gst-plugins-good
+        - libdvdread
+        - lame
+        - libdvbpsi
+        - libiec61883
+        - libmad
+        - libmpeg2
+        - mjpegtools
+        - mpg123
+        - xvidcore
+        - flameshot
+        - firefox
+        - brave
+        - firefox-i18n-pt-br
+        - unace
+        - unrar
+        - p7zip
+        - sharutils
+        - uudeview
+        - arj
+        - cabextract
+        - lzip
+        - zlib
+        - laszip
+        - lbzip2
+        - lrzip
+        - pbzip2
+        - lzop
+        - gufw
+        - clamav
+        - clamtk 
+        - google-cloud-sdk  
+      state: latest
+      update_cache: yes
+
+   - name: Installing AWS CLI via pip3
+     become: true
+     pip:
+        name: awscli
+        executable: pip3
+
+   - name: Installing Terraform 0.12.31
+     become: true
+     unarchive:
+       src: 'https://releases.hashicorp.com/terraform/0.12.31/terraform_0.12.31_linux_amd64.zip'
+       dest: /usr/local/bin
+       remote_src: yes
+   - name: Renaming terraform12 binary
+     become: true
+     command: mv /usr/local/bin/terraform /usr/local/bin/terraform12
+   - name: Installing Terraform 0.13.7 
+     become: true
+     unarchive:
+       src: 'https://releases.hashicorp.com/terraform/0.13.7/terraform_0.13.7_linux_amd64.zip'
+       dest: /usr/local/bin
+       remote_src: yes
+   - name: Renaming terraform13 binary
+     become: true
+     command: mv /usr/local/bin/terraform /usr/local/bin/terraform13
+   - name: Installing Terraform 0.14.11
+     become: true
+     unarchive:
+       src: 'https://releases.hashicorp.com/terraform/0.14.11/terraform_0.14.11_linux_amd64.zip'
+       dest: /usr/local/bin
+       remote_src: yes
+   - name: Renaming terraform14 binary
+     become: true
+     command: mv /usr/local/bin/terraform /usr/local/bin/terraform14
+   - name: Installing Terraform 0.15.0
+     become: true
+     unarchive:
+       src: 'https://releases.hashicorp.com/terraform/0.15.5/terraform_0.15.5_linux_amd64.zip'
+       dest: /usr/local/bin
+       remote_src: yes
+   - name: Renaming terraform15 binary
+     become: true
+     command: mv /usr/local/bin/terraform /usr/local/bin/terraform15
+   - name: Installing Terraform 1.0.4
+     become: true
+     unarchive:
+       src: 'https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip'
+       dest: /usr/local/bin
+       remote_src: yes
+   - name: Renaming terraform1 binary
+     become: true
+     command: mv /usr/local/bin/terraform /usr/local/bin/terraform1
+
+   - name: Installing Vault 1.8.1
+     become: true
+     unarchive:
+       src: 'https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_linux_amd64.zip'
+       dest: /usr/local/bin
+       remote_src: yes

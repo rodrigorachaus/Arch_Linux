@@ -1,0 +1,97 @@
+# Conky, a system monitor, based on torsmo
+alignment middle_right
+background no
+use_xft yes
+font Dejavu Sans:size=8
+xftalpha 0
+update_interval 2.0
+total_run_times 0
+own_window yes
+own_window_transparent no
+own_window_type desktop
+own_window_argb_visual yes
+own_window_argb_value 120
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 200
+maximum_width 200
+draw_shades no
+draw_outline yes
+draw_borders no
+draw_graph_borders no
+default_color 999999
+default_shade_color black
+default_outline_color black
+alignment top_right
+gap_x 8
+gap_y 124
+no_buffers yes
+cpu_avg_samples 2
+text_buffer_size 1024
+override_utf8_locale no
+uppercase no
+double_buffer yes
+TEXT
+ARCH LINUX DESKTOP
+$hr
+Kernel: $sysname $kernel
+${color grey}Tempo ativo:$color $uptime
+Hora: ${time %H:%M:%S} Data: ${time %e/%b/%y}
+$hr
+CPU USAGE$alignr ${cpu cpu0}%
+$hr
+Procesador: ${alignr}${freq_g}GHz / 4.5GHz
+${color green}${cpubar 4 cpu0}${color orange}
+${color green}${cpubar 4 cpu1}${color orange}
+${color green}${cpubar 4 cpu2}${color orange}
+${color green}${cpubar 4 cpu3}${color orange}
+${color green}${cpubar 4 cpu4}${color orange}
+$hr
+CPU STATS
+$hr
+Processos$alignr CPU% MEM%
+${top name 1}$alignr${top cpu 1} ${top mem 1}
+${top name 2}$alignr${top cpu 2} ${top mem 2}
+${top name 3}$alignr${top cpu 3} ${top mem 3}
+${top name 4}$alignr${top cpu 4} ${top mem 4}
+R A M$alignr $memperc%
+$hr
+Memoria: ${alignr}${mem} / ${memmax}
+${color green}${membar 4}${color grey}
+$hr
+RAM STATS
+$hr
+Processos $alignr CPU% MEM%
+${top_mem name 1}$alignr${top_mem cpu 1} ${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2} ${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3} ${top_mem mem 3}
+${top_mem name 4}$alignr${top_mem cpu 4} ${top_mem mem 4}
+${top_mem name 5}$alignr${top_mem cpu 5} ${top_mem mem 5}
+NVIDIA$alignr GPU% MEM%
+$hr
+${color1}GPU:${color #FCAF3E}${exec nvidia-smi --query-gpu=gpu_name --format=csv,noheader,nounits} $color
+${color1}GPU Temperature ${color}  ${execi 60 nvidia-settings -query [gpu:0]/GPUCoreTemp -t} °C
+${color1}GPU Utilization ${color}  ${exec nvidia-smi | grep % | cut -c 61-63} %
+${color1}VRAM Utilization ${color} ${exec nvidia-smi | grep % | cut -c 37-40} MB
+${color1}GPU Power Draw ${color} ${exec nvidia-smi | grep % | cut -c 21-23} W
+$hr
+ARMAZENAMENTO
+$hr
+Raiz: ${alignr}$color${fs_used /} / ${fs_size /}
+${color green}${fs_bar 4 /}${color grey}
+Home: ${alignr}$color${fs_used /home} / ${fs_size /home}
+${color green}${fs_bar 4 /home}${color grey}
+Roms: ${alignr}$color${fs_used /mnt/50317f09-e763-45d0-83c2-6f0dd15c032d} / ${fs_size /mnt/50317f09-e763-45d0-83c2-6f0dd15c032d}
+${color green}${fs_bar 4 /mnt/50317f09-e763-45d0-83c2-6f0dd15c032d}${color grey}
+DevOps and Other: ${alignr}$color${fs_used /mnt/cc2edbd4-31b2-43f1-a314-ab27f7d6c195} / ${fs_size /mnt/cc2edbd4-31b2-43f1-a314-ab27f7d6c195}
+${color green}${fs_bar 4 /mnt/cc2edbd4-31b2-43f1-a314-ab27f7d6c195}${color grey}
+Desenvolvimento: ${alignr}$color${fs_used /mnt/ce2c3489-fca8-42b6-9826-581460d4473d} / ${fs_size /mnt/ce2c3489-fca8-42b6-9826-581460d4473d}
+${color green}${fs_bar 4 /mnt/ce2c3489-fca8-42b6-9826-581460d4473d}${color grey}
+Documentos: ${alignr}$color${fs_used /mnt/9ce832c0-e775-45ba-8078-0a16e63d719d} / ${fs_size /mnt/9ce832c0-e775-45ba-8078-0a16e63d719d}
+${color green}${fs_bar 4 /mnt/9ce832c0-e775-45ba-8078-0a16e63d719d}${color grey}
+$hr
+STATUS DE REDES${alignr}${downspeed enp7s0}
+$hr
+Entrada/Saida ${alignr}${totaldown enp7s0} / ${totalup enp7s0}
+Docker Stats ${alignr}${totaldown docker0} / ${totalup docker0}
+
